@@ -21,8 +21,17 @@ export default class ShadowCameraHelper extends Component {
         this._cameraHelper.update();
     }
 
+    onEnable(){
+        this.entity._world._thScene.add(this._cameraHelper);
+    }
+
+    onDisable(){
+        this.entity._world._thScene.remove(this._cameraHelper);
+    }
+
     release(){
         this.entity._world._thScene.remove(this._cameraHelper);
+        this._cameraHelper.dispose();
     }
 
 }

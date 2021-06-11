@@ -133,6 +133,10 @@ function setupTestScene(){
         flyControls.enabled = !config.useTransformControls;
     });
     gui.add(transformControls, 'mode', { Translate: "translate", Rotate: "rotate", Scale: "scale"});
+    
     gui.add(rotationComponent, 'rotationSpeed', 0, 2*3.1416);
+
+    const folder = gui.addFolder('spotlight shadow camera helper');
+    folder.add(shadowCameraHelper, 'enabled');
 
 }

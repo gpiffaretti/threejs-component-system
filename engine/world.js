@@ -55,7 +55,10 @@ export class World {
 
     update(dt){
 
-        // call Start() method in newly added components
+        //  onEnable() callback
+        this._componentManager.enablePendingComponents();
+
+        //  start() callback
         this._componentManager.initializePendingComponents();
 
         // TODO: register components in manager by type, and use data locality for speeding up things.
@@ -64,6 +67,10 @@ export class World {
             entity.update(dt);
         });
 
+        //  onDisable() callback
+        this._componentManager.disablePendingComponents();
+
+        //  release() callback
         this._componentManager.releasePendingComponents();
     }
 
