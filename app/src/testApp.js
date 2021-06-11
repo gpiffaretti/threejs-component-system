@@ -97,7 +97,7 @@ function setupTestScene(){
     });
 
     gui.add(config, 'useTransformControls').onChange(() => {
-        transformControls.visible = config.useTransformControls;
+        transformControls.enabled = transformControls.visible = config.useTransformControls;
         flyControls.enabled = !config.useTransformControls;
     });
     gui.add(transformControls, 'mode', { Translate: "translate", Rotate: "rotate", Scale: "scale"});
