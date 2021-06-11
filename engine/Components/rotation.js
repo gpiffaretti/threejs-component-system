@@ -1,4 +1,4 @@
-import { Vector3 } from "../../lib/three/three.module.js";
+import { Vector3 } from "../../lib/three/build/three.module.js";
 import Component from "../component.js"
 
 export default class Rotation extends Component {
@@ -9,11 +9,10 @@ export default class Rotation extends Component {
 
     constructor(){
         super();
-
     }
 
     start(){
-        this._object3D = this.entity.thObject3D;
+        this._object3D = this.entity.Object3D;
     }
 
     update(dt){

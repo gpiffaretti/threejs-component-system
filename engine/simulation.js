@@ -1,6 +1,6 @@
-import * as THREE from '../lib/three/three.module.js'
+import * as THREE from '../lib/three/build/three.module.js'
 import { World } from './engine.js'
-import Stats from './jsm/libs/stats.module.js'
+import Stats from '../lib/three/examples/jsm/libs/stats.module.js'
 
 export class Simulation {
     

@@ -1,12 +1,12 @@
-import * as THREE from '../lib/three/three.module.js';
+import * as THREE from '../lib/three/build/three.module.js';
 import * as engine from './engine.js';
 import ComponentManager from './componentManager.js';
 
 export class World {
     thCamera;
+    thRenderer;
 
     _thScene;
-    _thRenderer; 
 
     _entities = new Array();
     _componentManager;
@@ -18,22 +18,22 @@ export class World {
     initialize(){
         this._componentManager = new ComponentManager(this);
 
-        // Camera
-        this.thCamera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-		this.thCamera.position.set(2, 2, 2);
-
         // Scene
         this._thScene = new THREE.Scene();
 
-        // Renderer
-        this._thRenderer = new THREE.WebGLRenderer({ antialias: true });
-        this._thRenderer.shadowMap.enabled = true;
-        this._thRenderer.setPixelRatio(window.devicePixelRatio);
-        this._thRenderer.setSize(window.innerWidth, window.innerHeight);
-        this._thRenderer.setClearColor(0x263238);
-        document.body.appendChild(this._thRenderer.domElement);
+        // Camera
+        this.thCamera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+		this.thCamera.position.set(3, 3, -3);
 
-        this._thRenderer.localClippingEnabled = true;
+        // Renderer
+        this.thRenderer = new THREE.WebGLRenderer({ antialias: true });
+        this.thRenderer.shadowMap.enabled = true;
+        this.thRenderer.setPixelRatio(window.devicePixelRatio);
+        this.thRenderer.setSize(window.innerWidth, window.innerHeight);
+        this.thRenderer.setClearColor(0x263238);
+        document.body.appendChild(this.thRenderer.domElement);
+
+        this.thRenderer.localClippingEnabled = true;
     }
     
     createEntity(){
@@ -50,7 +50,6 @@ export class World {
         } else{
             console.log("Tried to remove entity but not present");
         }
-        
     }
 
     update(dt){
@@ -63,10 +62,12 @@ export class World {
         this._entities.forEach(entity => {
             entity.update(dt);
         });
+
+        this._componentManager.releasePendingComponents();
     }
 
     render(){
-        this._thRenderer.render(this._thScene, this.thCamera);
+        this.thRenderer.render(this._thScene, this.thCamera);
     }
 
 }

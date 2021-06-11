@@ -6,4 +6,6 @@ export * from "./component.js"
 
 // components
 import Rotation from "./Components/rotation.js"
-export { Rotation }
+import SpotLightFit from "./Components/spotLightFit.js"
+import Object3DUpdate from "./Components/object3DUpdate.js";
+export { Rotation, SpotLightFit, Object3DUpdate }

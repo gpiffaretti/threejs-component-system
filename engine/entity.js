@@ -5,24 +5,32 @@ export class Entity {
     _componentManager;
     _components = new Array();
 
-    _thObject3D;
+    _Object3D;
+
+    get name(){
+        return this._Object3D.name;
+    }
+    
+    set name(newName){
+        this._Object3D.name = newName;
+    }
 
     constructor(world, componentManager){
         this._world = world;
         this._componentManager = componentManager;
     }
 
-    get thObject3D(){
-        return this._thObject3D;
+    get Object3D(){
+        return this._Object3D;
     }
 
-    set thObject3D(obj3D){
+    set Object3D(obj3D){
         // we assume that the old Object3D won't need to be in the scene anymore
-        if(this._thObject3D)
-            this._world._thScene.remove(this._thObject3D);
+        if(this._Object3D)
+            this._world._thScene.remove(this._Object3D);
         // assign and add the new one to the scene
-        this._thObject3D = obj3D;
-        this._world._thScene.add(this._thObject3D);
+        this._Object3D = obj3D;
+        this._world._thScene.add(this._Object3D);
     }
 
     addComponent(component){
@@ -31,13 +39,21 @@ export class Entity {
         this._components.push(component);
     }
 
+    removeComponent(){
+        component.entity = this;
+        this._componentManager.unregisterComponent(component);
+        const index = this._components.indexOf(component);
+        this._components.splice(index, 1);
+    }
+
     getComponent(componentType){
         return this._components.find(c => c instanceof componentType);
     }
 
     update(dt){
         this._components.forEach(component => {
-            component.update(dt);
+            if(component.enabled)
+                component.update(dt);
         });
     }
 
