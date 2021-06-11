@@ -22,6 +22,7 @@ export default class SpotLightFit extends Component {
     }
 
     update(dt){
+        // update spotlight cone
         let bbox = new THREE.Box3().setFromObject(this.targetObject3D);
         const center = new THREE.Vector3();
         bbox.getCenter(center);
@@ -31,9 +32,16 @@ export default class SpotLightFit extends Component {
         const distance = this.targetObject3D.position.distanceTo(this.spotLight.position);
 
         const alpha = Math.asin(radius / distance);
+        const spotLightDistance = distance + radius*2;
 
         this.spotLight.angle = alpha;
-        this.spotLight.distance = distance + radius;
+        this.spotLight.distance = spotLightDistance;
 
+        // update spotlight shadow camera
+        if(!this.spotLight.shadow) return;
+        this.spotLight.shadow.camera.focus = distance;
+        this.spotLight.shadow.camera.fov = alpha * 2;
+        this.spotLight.shadow.camera.far = spotLightDistance;
+        
     }
 }

@@ -22,22 +22,25 @@ export class Simulation {
     }
 
     playSimulation() {
-        if(!this.isPlaying){
+        if(!this._isPlaying){
+            console.log("Play simulation");
             this._clock.start();
+            this._isPlaying = true;
             this._updateSimulation();
         }
     }
 
     stopSimulation() {
         if(this._isPlaying){
+            console.log("Stop simulation");
             this._clock.stop();
-            cancelAnimationFrame(this.animationFrameRequestID);
+            cancelAnimationFrame(this._animationFrameRequestID);
+            this._isPlaying = false;
         }
-        this._isPlaying = false;
     }
 
     _updateSimulation(){
-        requestAnimationFrame(this._updateSimulation.bind(this));
+        this._animationFrameRequestID = requestAnimationFrame(this._updateSimulation.bind(this));
 
         let dt = this._clock.getDelta();
         this._world.update(dt);

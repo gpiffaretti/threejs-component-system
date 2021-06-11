@@ -23,11 +23,12 @@ export class World {
 
         // Camera
         this.thCamera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-		this.thCamera.position.set(3, 3, -3);
+		this.thCamera.position.set(3, 3, 5);
 
         // Renderer
         this.thRenderer = new THREE.WebGLRenderer({ antialias: true });
         this.thRenderer.shadowMap.enabled = true;
+        this.thRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
         this.thRenderer.setPixelRatio(window.devicePixelRatio);
         this.thRenderer.setSize(window.innerWidth, window.innerHeight);
         this.thRenderer.setClearColor(0x263238);
