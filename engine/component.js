@@ -16,4 +16,8 @@ export default class Component {
     update(dt){
         
     }
+
+    release(){
+        
+    }
 }

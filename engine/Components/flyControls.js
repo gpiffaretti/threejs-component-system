@@ -17,7 +17,7 @@ export default class FlyControlThree extends Component {
     start(){
         this._flyControls = new FlyControls(this._camera, this._domElement);
         this._flyControls.movementSpeed = 4;
-        this._flyControls.rollSpeed = MathUtils.degToRad(90);
+        this._flyControls.rollSpeed = MathUtils.degToRad(30);
         this._flyControls.autoForward = false;
         this._flyControls.dragToLook = true;
     }
