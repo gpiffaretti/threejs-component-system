@@ -59,7 +59,12 @@ function setupTestScene(){
     const object3DUpdater = new engine.Object3DUpdate();
     spotLightHelperEntity.addComponent(object3DUpdater);
 
+    // camera controls
     world.thCamera.lookAt(0,2,0);
+    const flyControlsEntity = world.createEntity();
+    const flyControls = new engine.FlyControlThree(world.thCamera, world.thRenderer.domElement);
+    flyControlsEntity.addComponent(flyControls);
+    flyControls.enabled = false;
     
     // editor controls
     const sceneElementNames = { 
@@ -93,6 +98,7 @@ function setupTestScene(){
 
     gui.add(config, 'useTransformControls').onChange(() => {
         transformControls.visible = config.useTransformControls;
+        flyControls.enabled = !config.useTransformControls;
     });
     gui.add(transformControls, 'mode', { Translate: "translate", Rotate: "rotate", Scale: "scale"});
     gui.add(rotationComponent, 'rotationSpeed', 0, 2*3.1416);

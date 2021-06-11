@@ -15,6 +15,10 @@ export class Entity {
         this._Object3D.name = newName;
     }
 
+    get world(){
+        return this._world;
+    }
+
     constructor(world, componentManager){
         this._world = world;
         this._componentManager = componentManager;

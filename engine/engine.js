@@ -8,4 +8,5 @@ export * from "./component.js"
 import Rotation from "./Components/rotation.js"
 import SpotLightFit from "./Components/spotLightFit.js"
 import Object3DUpdate from "./Components/object3DUpdate.js";
-export { Rotation, SpotLightFit, Object3DUpdate }
+import FlyControlThree from "./Components/flyControls.js"
+export { Rotation, SpotLightFit, Object3DUpdate, FlyControlThree }
