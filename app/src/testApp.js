@@ -28,6 +28,7 @@ function setupTestScene(){
     const cubeMesh = new THREE.Mesh(geometry, material);
     cubeMesh.name = "Cube";
     cubeMesh.position.set(0,0.5,0);
+    cubeMesh.castShadow = true;
 
     const cubeEntity = world.createEntity();
     cubeEntity.Object3D = cubeMesh;
@@ -62,7 +63,7 @@ function setupTestScene(){
     planeGeometry.rotateX( - Math.PI / 2 );
 
     const planeGeometryMaterial = new THREE.ShadowMaterial();
-    planeGeometryMaterial.opacity = 1;
+    planeGeometryMaterial.opacity = 0.4;
 
     const plane = new THREE.Mesh( planeGeometry, planeGeometryMaterial );
     plane.name = "Shadow plane";

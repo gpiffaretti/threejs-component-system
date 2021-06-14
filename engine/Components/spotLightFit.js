@@ -32,7 +32,7 @@ export default class SpotLightFit extends Component {
         const distance = this.targetObject3D.position.distanceTo(this.spotLight.position);
 
         const alpha = Math.asin(radius / distance);
-        const spotLightDistance = distance + radius*2;
+        const spotLightDistance = distance + radius*4;
 
         this.spotLight.angle = alpha;
         this.spotLight.distance = spotLightDistance;
