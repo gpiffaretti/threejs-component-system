@@ -7,7 +7,11 @@ Install dependencies:
 
 `npm install`
 
-Start live server using webpack:
+Build with webpack:
+
+`npm run build`
+
+Start webpack dev server:
 
 `npm start`
 
