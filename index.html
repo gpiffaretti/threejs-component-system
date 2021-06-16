@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>My first three.js app</title>
+    <title>
+        <%= htmlWebpackPlugin.options.title %>
+    </title>
     <style>
         body {
             margin: 0;
@@ -12,11 +14,7 @@
 </head>
 
 <body>
-    <script type="module">
-        import * as app from './app/src/testApp.js'
 
-        app.run();
-    </script>
 </body>
 
 </html>
