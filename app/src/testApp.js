@@ -1,4 +1,4 @@
-import * as engine from "../../engine/engine.js";
+import * as engine from "../../engine/core/engine.js";
 import * as THREE from '../../lib/three/build/three.module.js';
 import { TransformControls } from "../../lib/three/examples/jsm/controls/TransformControls.js";
 import { GUI } from '../../lib/three/examples/jsm/libs/dat.gui.module.js'
@@ -9,6 +9,7 @@ export class TestApp {
     world;
 
     run(){
+        
         this.simulation = new engine.Simulation();
         this.world = this.simulation.initialize();
         this.simulation.playSimulation();

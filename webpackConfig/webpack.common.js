@@ -23,6 +23,11 @@ module.exports = (env) => {
                 
             ]
         },
+        resolve: {
+            alias: {
+                logging: path.resolve(__dirname, './engine/subsystems/logging/logging.js')
+            },
+        },
         optimization: {
             minimize: true,
         },

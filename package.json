@@ -27,6 +27,8 @@
   "devDependencies": {
     "html-webpack-plugin": "^5.3.1",
     "ifdef-loader": "^2.3.0",
+    "sweet.js": "^3.0.15",
+    "sweetjs-loader": "0.0.7",
     "webpack": "^5.39.0",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2",
